@@ -73,7 +73,7 @@ class App extends Component {
   }
   onRouteChange = (route) => {
     if (route === 'signout') {
-      this.setState({ isSignedIn: false });
+      this.setState(initialState);
     } else if (route === 'home') {
       this.setState({ isSignedIn: true });
     }
@@ -83,7 +83,7 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({ imageurl: this.state.input });
 
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://smartbrainapi-3v9h.onrender.com/imageurl', {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -91,7 +91,7 @@ class App extends Component {
       })
     }).then(response => response.json())
       .then((response) => {
-        fetch('http://localhost:3000/image', {
+        fetch('https://smartbrainapi-3v9h.onrender.com/image', {
           method: "put",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -144,8 +144,8 @@ class App extends Component {
                   quantity: 4,
                 },
                 repulse: {
-                  distance: 200,
-                  duration: 0.2,
+                  distance: 100,
+                  duration: 0.5,
                 },
               },
             },
@@ -205,8 +205,6 @@ class App extends Component {
             <SigninForm loadUser={this.loadUser} onRouteChange={this.onRouteChange} /> :
             <Register loadUser={this.loadUser}
               onRouteChange={this.onRouteChange} />)
-
-
         }
 
 

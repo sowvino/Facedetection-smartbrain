@@ -20,7 +20,7 @@ class Register extends Component {
         this.setState({ password: event.target.value });
     }
     onSubmitRegister = () => {
-        fetch('http://localhost:3000/register', {
+        fetch('https://smartbrainapi-3v9h.onrender.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
