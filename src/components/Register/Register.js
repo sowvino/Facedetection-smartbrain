@@ -20,7 +20,7 @@ class Register extends Component {
         this.setState({ password: event.target.value });
     }
     onSubmitRegister = () => {
-        fetch('https://smartbrainapi-3v9h.onrender.com/register', {
+        fetch('https://ai-brain.onrender.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -31,7 +31,7 @@ class Register extends Component {
         }).then(res => res.json()).then(user => {
             if (user.id) {
                 this.props.loadUser(user);
-                this.props.onRouteChange('signin');
+                this.props.onRouteChange('home');
             }
         })
 
